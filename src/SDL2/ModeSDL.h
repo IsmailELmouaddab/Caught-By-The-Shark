@@ -17,6 +17,8 @@
 
 #include "Jeu.h"
 
+
+
 class Joueur{
 private:
     SDL_Surface * surface;
@@ -25,7 +27,6 @@ private:
 
 public:
     Joueur();
-    void afficherMenu(SDL_Renderer * renderer);
     void chargerFichier(const char * filename, SDL_Renderer * renderer);
     void loadFromCurrentSurface(SDL_Renderer * renderer);
     void draw(SDL_Renderer * renderer,int x, int y, int w=-1,int h=-1);
@@ -40,8 +41,13 @@ private:
     SDL_Renderer * renderer;
     TTF_Font * font;
     Joueur font_perso;
+    int dimx,dimy;
 
     SDL_Color font_color;
+
+    Mix_Chunk * soundBackground;
+    Mix_Chunk * soundPosRequin;
+    bool withSound;
 
     Joueur in_neptune;
     Joueur in_poseidon;
@@ -50,7 +56,12 @@ private:
     Joueur in_barriere;
     Joueur in_mur;
     Joueur in_ocean;
-    Joueur in_perdu;
+    Joueur in_win1;
+    Joueur in_win2;
+    Joueur in_menu;
+    Joueur in_tuto;
+
+
 
     bool souris;
     bool touche;
@@ -59,7 +70,12 @@ public:
     ~sdlJeu();
     void boucleSDL();
     void sdlAffichage();
-
+    void sdlMenu();
+    void sdlTuto();
 
 };
+
+
+
+
 #endif // _MODESDL_H
